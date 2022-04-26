@@ -10,6 +10,7 @@ use Laravel\Nova\Http\Controllers\ResourceUpdateController;
 use Laravel\Nova\Http\Controllers\UpdateFieldController;
 use Laravel\Nova\Http\Requests\NovaRequest;
 use Laravel\Nova\Resource;
+use Laravel\Nova\Fields\FieldCollection;
 
 trait HasJsonWrapper
 {
@@ -22,9 +23,9 @@ trait HasJsonWrapper
      *
      * @return Collection
      */
-    public function availablePanelsForDetail(NovaRequest $request, Resource $resource)
+    public function availablePanelsForDetail(NovaRequest $request, Resource $resource, FieldCollection $fields)
     {
-        $panels = parent::availablePanelsForDetail($request, $resource);
+        $panels = parent::availablePanelsForDetail($request, $resource, $fields);
         $fields = parent::availableFields($request);
 
         return $panels;
